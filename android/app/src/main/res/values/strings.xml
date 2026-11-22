@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Contador</string>
+    <string name="widget_empty">Crie um evento no app</string>
+    <string name="widget_config_title">Qual evento este widget vai mostrar?</string>
+
+    <string name="widget_classic_name">Contador · Clássico</string>
+    <string name="widget_classic_desc">Emoji, número grande de dias e o nome do evento.</string>
+    <string name="widget_detailed_name">Contador · Detalhado</string>
+    <string name="widget_detailed_desc">Dias e relógio ao vivo com horas, minutos e segundos.</string>
+    <string name="widget_progress_name">Contador · Progresso</string>
+    <string name="widget_progress_desc">Barra com quanto do caminho até a data já passou.</string>
+    <string name="widget_list_name">Contador · Lista</string>
+    <string name="widget_list_desc">Seus próximos eventos em um só widget.</string>
+    <string name="widget_minimal_name">Contador · Minimalista</string>
+    <string name="widget_minimal_desc">Só o número, limpo e discreto.</string>
+</resources>
