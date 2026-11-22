@@ -166,32 +166,52 @@ class _EditEventScreenState extends State<EditEventScreen> {
             const SizedBox(height: 24),
             Text('Emoji', style: Theme.of(context).textTheme.titleSmall),
             const SizedBox(height: 8),
-            Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              children: [
-                for (final e in eventEmojis)
-                  ChoiceChip(
-                    label: Text(e, style: const TextStyle(fontSize: 20)),
-                    selected: e == _emoji,
-                    showCheckmark: false,
-                    onSelected: (_) => setState(() => _emoji = e),
-                  ),
-              ],
-            ),
+            for (final category in emojiCategories.entries) ...[
+              Padding(
+                padding: const EdgeInsets.only(top: 8, bottom: 4),
+                child: Text(category.key,
+                    style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                        color: scheme.onSurfaceVariant)),
+              ),
+              Wrap(
+                spacing: 4,
+                runSpacing: 4,
+                children: [
+                  for (final e in category.value)
+                    InkWell(
+                      onTap: () => setState(() => _emoji = e),
+                      borderRadius: BorderRadius.circular(10),
+                      child: Container(
+                        width: 44,
+                        height: 44,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: e == _emoji ? scheme.primaryContainer : null,
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: e == _emoji ? scheme.primary : Colors.transparent,
+                            width: 2,
+                          ),
+                        ),
+                        child: Text(e, style: const TextStyle(fontSize: 24)),
+                      ),
+                    ),
+                ],
+              ),
+            ],
             const SizedBox(height: 24),
             Text('Cor do widget', style: Theme.of(context).textTheme.titleSmall),
             const SizedBox(height: 8),
             Wrap(
-              spacing: 12,
-              runSpacing: 12,
+              spacing: 10,
+              runSpacing: 10,
               children: [
                 for (final c in eventColors)
                   GestureDetector(
                     onTap: () => setState(() => _color = c),
                     child: Container(
-                      width: 40,
-                      height: 40,
+                      width: 38,
+                      height: 38,
                       decoration: BoxDecoration(
                         color: Color(c),
                         shape: BoxShape.circle,

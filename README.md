@@ -1,4 +1,4 @@
-# Contador — widgets de contagem regressiva
+# Contador Eckhardt — widgets de contagem regressiva
 
 App para **Android e iPhone** que mostra, na **tela inicial** e na **tela de bloqueio**,
 quanto tempo falta para uma data ou evento. Cada evento tem nome, emoji, data/hora e cor,
@@ -78,7 +78,7 @@ Depois é só rodar:
 flutter run
 ```
 
-Para adicionar: segure a tela inicial → **Widgets** → **Contador**. No app, a tela
+Para adicionar: segure a tela inicial → **Widgets** → **Contador Eckhardt**. No app, a tela
 **Widgets** (ícone no topo) também tem o botão **Adicionar à tela inicial**.
 
 ### 3. iPhone (feito uma vez no Xcode)
@@ -100,15 +100,16 @@ Para adicionar: segure a tela inicial → **Widgets** → **Contador**. No app, 
    `ios/CountdownWidget/SharedEvents.swift`.)
 6. No target **Runner** → *Build Phases*: se a fase **Embed Foundation Extensions** aparecer
    abaixo de **Thin Binary**, arraste-a para cima dela (evita o erro *"Cycle inside Runner"*).
-7. Rode pelo Flutter:
+7. **Nome do app** — em `ios/Runner/Info.plist`, mude `CFBundleDisplayName` para `Contador Eckhardt`.
+8. Rode pelo Flutter:
 
    ```bash
    flutter run
    ```
 
-Para adicionar: **tela inicial** → segure → **Editar → Adicionar widget → Contador**.
+Para adicionar: **tela inicial** → segure → **Editar → Adicionar widget → Contador Eckhardt**.
 **Tela de bloqueio** → segure a tela bloqueada → **Personalizar → Tela Bloqueada** → toque na área
-de widgets → **Contador**.
+de widgets → **Contador Eckhardt**.
 
 ## Testes
 

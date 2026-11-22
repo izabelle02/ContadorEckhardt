@@ -123,13 +123,13 @@ class _HowToCard extends StatelessWidget {
     final steps = isAndroid
         ? const [
             'Toque e segure num espaço vazio da tela inicial.',
-            'Escolha "Widgets" e procure por "Contador".',
+            'Escolha "Widgets" e procure por "Contador Eckhardt".',
             'Arraste o layout que preferir para a tela.',
             'Escolha qual evento o widget vai mostrar.',
             'Para trocar o evento depois, toque e segure o widget → "Reconfigurar".',
           ]
         : const [
-            'Tela inicial: toque e segure num espaço vazio, toque em "Editar" → "Adicionar widget" e procure "Contador".',
+            'Tela inicial: toque e segure num espaço vazio, toque em "Editar" → "Adicionar widget" e procure "Contador Eckhardt".',
             'Tela de bloqueio: toque e segure a tela bloqueada → "Personalizar" → "Tela Bloqueada" → toque na área de widgets.',
             'Depois de adicionar, toque e segure o widget → "Editar widget" para escolher o evento.',
           ];

@@ -44,7 +44,7 @@ class _ContadorAppState extends State<ContadorApp> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     const seed = Color(0xFF6750A4);
     return MaterialApp(
-      title: 'Contador',
+      title: 'Contador Eckhardt',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(colorSchemeSeed: seed, useMaterial3: true),
       darkTheme: ThemeData(
