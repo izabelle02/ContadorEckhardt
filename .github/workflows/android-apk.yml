@@ -1,0 +1,61 @@
+# Monta o APK do Android na nuvem e publica em "Releases" com link de download.
+name: Gerar APK Android
+
+on:
+  push:
+    branches: [main, "claude/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Gerar arquivos de plataforma
+        run: flutter create --org com.eckhardt --project-name contador --platforms android .
+
+      - name: minSdk 24 (relógio regressivo do widget)
+        run: |
+          if [ -f android/app/build.gradle.kts ]; then
+            sed -i 's/minSdk = flutter.minSdkVersion/minSdk = 24/' android/app/build.gradle.kts
+          else
+            sed -i 's/minSdkVersion flutter.minSdkVersion/minSdkVersion 24/; s/minSdk = flutter.minSdkVersion/minSdk = 24/' android/app/build.gradle
+          fi
+
+      - run: flutter pub get
+      - run: flutter test
+      - run: flutter build apk --release
+
+      - name: Renomear APK
+        run: cp build/app/outputs/flutter-apk/app-release.apk contador.apk
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: contador-apk
+          path: contador.apk
+
+      - name: Publicar no Releases
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.${{ github.run_number }}
+          name: Contador 1.0.${{ github.run_number }}
+          target_commitish: ${{ github.sha }}
+          make_latest: true
+          files: contador.apk
+          body: |
+            Abra este link no celular Android para baixar e instalar:
+            https://github.com/${{ github.repository }}/releases/latest/download/contador.apk
